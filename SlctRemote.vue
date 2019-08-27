@@ -25,7 +25,10 @@ export default {
         this.bfrModel = this.slctModel
 
         if (this.slctModel !== null && this.slctModel !== '') {
-            qryOptions({ bizDictCode: this.slctModel, categoryCode: this.code }).then(response => {
+            qryOptions({
+                bizDictCode: this.slctModel,
+                categoryCode: this.code
+            }).then(response => {
                 this.options = response.data.bizData[this.code]
                 this.loading = false
             })
@@ -52,7 +55,7 @@ export default {
             qryOptions({
                 bizDictDesc: query,
                 categoryCode: this.code
-            }).then((response) => {
+            }).then(response => {
                 this.options = response.data.bizData[this.code]
                 this.loading = false
             })
