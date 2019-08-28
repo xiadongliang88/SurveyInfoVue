@@ -19,38 +19,20 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import Anchor from '@/components/Anchor/index.vue'
-// 导入SubHeader
 import headerData from '@/utils/mixin'
-
 import { findPolicyInfo } from '@/modules/claim/apis/surveyApi'
-// 导入估损信息(公共组件)
-// import LossAssessmentAHI from '@/modules/claim/views/Common/LossAssessmentAHI'
 import { getMenuListForIssue } from '@/modules/workbench/apis/initiate-mgt'
-// import { initiateRouter } from '@/utils/base'
-
-// 导入SelectDemo测试组件
 import SelectDemo from './SelectDemo.vue'
-// 导入查勘信息
 import SurveyInfo from './SurveyInfo.vue'
-// 导入出险信息
 import AccidentInfo from './AccidentInfo.vue'
-// 导入保险责任初判
 import InsuranceLiability from './InsuranceLiability.vue'
-// 导入人伤信息
 import InjuryInfo from './InjuryInfo.vue'
-// 导入物损责任险
 import LiabilityLoss from './LiabilityLoss.vue'
-// 导入物损财产险
 import PropertyLoss from './PropertyLoss.vue'
-// 导入物损工程险
 import EngineeringLoss from './EngineeringLoss.vue'
-// 导入物损货运险
 import FreightLoss from './FreightLoss.vue'
-// 导入物损船舶险
 import ShipLoss from './ShipLoss.vue'
-// 导入其他信息
 import OtherInfo from './OtherInfo.vue'
-// 导入查勘小结
 import SurveySummary from './SurveySummary.vue'
 
 
@@ -75,19 +57,19 @@ export default {
     mixins: [headerData(chileData)],
 
     components: {
-        SelectDemo, // Select测试组件
-        SurveyInfo, // 查勘信息
-        AccidentInfo, // 出险信息
-        InsuranceLiability, // 保险责任初判
-        InjuryInfo, // 人伤信息
-        LiabilityLoss, // 物损-责任险
-        PropertyLoss, // 物损-财产险
-        EngineeringLoss, // 物损-工程险
-        FreightLoss, // 物损-货运险
-        ShipLoss, // 物损-船舶险
-        OtherInfo, // 其他信息
-        SurveySummary, // 查勘小结
-        Anchor,
+        SelectDemo,
+        SurveyInfo,
+        AccidentInfo,
+        InsuranceLiability,
+        InjuryInfo,
+        LiabilityLoss,
+        PropertyLoss,
+        EngineeringLoss,
+        FreightLoss,
+        ShipLoss,
+        OtherInfo,
+        SurveySummary,
+        Anchor
     },
 
     data() {
@@ -113,12 +95,12 @@ export default {
                 surveyInfo_valid: false,
                 accidentInfo_valid: false,
                 insuranceLiability_valid: false,
-                // - injuryInfo_valid: false,
-                // - liabilityLoss_valid: false,
-                // - propertyLoss_valid: false,
-                // - engineeringLoss_valid: false,
-                // - freightLoss_valid: false,
-                // - shipLoss_valid: false
+                injuryInfo_valid: false,
+                liabilityLoss_valid: false,
+                propertyLoss_valid: false,
+                engineeringLoss_valid: false,
+                freightLoss_valid: false,
+                shipLoss_valid: false
             },
             message: {},
             subHeaderReqData: {
@@ -184,9 +166,9 @@ export default {
             })
         },
 
-        listenValidate() { // 监听校验
+        listenValidate() {
             for (let i = 0; i < Object.keys(this.validate); i++) {
-                this.bus.$off(i).bus.$on(i, (result) => { // 接受子组件返回值
+                this.bus.$off(i).bus.$on(i, (result) => {
                     if (result) {
                         console.log(`${i}校验OK`)
                         this.validate[i] = true
@@ -198,8 +180,8 @@ export default {
             }
         },
 
-        submit() { // 提交按钮
-            for (const item of this.emitAry) { // 派发到子组件
+        submit() {
+            for (const item of this.emitAry) {
                 this.bus.$emit(item)
             }
 
@@ -213,7 +195,7 @@ export default {
             }
         },
 
-        stage() { // 暂存按钮
+        stage() {
             console.log('stage')
         },
 

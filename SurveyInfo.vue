@@ -117,7 +117,6 @@ export default{
             ],
             value: '',
             rules: {
-                // 基本信息
                 surveyContactInfo: [
                     {
                         required: true,
@@ -180,27 +179,23 @@ export default{
             console.log(this.$store.state.SurveyEnterUAHI.DTO.claimSurveyBO.surveyBO[key])
         },
 
-        // 修改笔录信息
         commitRecords(key, index, value) {
             this.surveyRecordsBOListCommit({ key, index, value })
             console.log(this.$store.state.SurveyEnterUAHI.DTO.claimSurveyBO.surveyBO.surveyRecordsBOList[index][key])
         },
 
-        // 添加一行笔录信息
         addRecords() {
             this.$store.commit('SurveyEnter_unAHI/addSurveyRecordsBOItemCommit')
             console.log(this.$store.state.SurveyEnterUAHI.DTO.claimSurveyBO.surveyBO.surveyRecordsBOList)
         },
 
-        // 删除一行笔录信息
         deleteRecords() {
             this.$store.commit('SurveyEnter_unAHI/deleteSurveyRecordsBOItemCommit')
             console.log(this.$store.state.SurveyEnterUAHI.DTO.claimSurveyBO.surveyBO.surveyRecordsBOList)
         },
 
-        // 提交校验
         handleValidate() {
-            this.$refs.basicInfo.validate(valid => { // 查勘信息校验
+            this.$refs.basicInfo.validate(valid => {
                 if (valid) {
                     this.validate.basicInfo_valid = true
                     console.log('basicInfo correct')
@@ -210,7 +205,7 @@ export default{
                 }
             })
 
-            this.$refs.recordsInfo.validate(valid => { // 笔录信息校验
+            this.$refs.recordsInfo.validate(valid => {
                 if (valid) {
                     this.validate.recordsInfo_valid = true
                     console.log('recordsInfo correct')
